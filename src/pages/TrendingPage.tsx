@@ -3,10 +3,11 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TrendingHero } from "@/components/sections/TrendingHero";
 import { ArticleGrid } from "@/components/sections/ArticleGrid";
-import { ArticleCard } from "@/components/ui/ArticleCard";
+import { ArticleCard, ArticleCardProps } from "@/components/ui/ArticleCard";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { ArrowUpRight, Filter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const TrendingPage = () => {
   // Sample trending article data
@@ -62,7 +63,7 @@ const TrendingPage = () => {
   ];
 
   // Additional trending articles
-  const moreTrendingArticles = [
+  const moreTrendingArticles: ArticleCardProps[] = [
     {
       title: "Did this celebrity really endorse cryptocurrency investment scheme?",
       description: "Social media is flooded with ads showing a famous actor promoting a cryptocurrency platform. We investigate if it's legitimate.",
@@ -151,9 +152,11 @@ const TrendingPage = () => {
             </div>
             
             <FadeIn className="mt-10 flex justify-center">
-              <Button className="group">
-                View All Trending Topics
-                <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <Button className="group" asChild>
+                <Link to="/trending">
+                  View All Trending Topics
+                  <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </Link>
               </Button>
             </FadeIn>
           </div>

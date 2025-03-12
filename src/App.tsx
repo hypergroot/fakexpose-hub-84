@@ -9,6 +9,7 @@ import TrendingPage from "./pages/TrendingPage";
 import LatestPage from "./pages/LatestPage";
 import NewsPage from "./pages/NewsPage";
 import PoliticsPage from "./pages/PoliticsPage";
+import ArticleDetailPage from "./pages/ArticleDetailPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,10 @@ const App = () => (
           <Route path="/latest" element={<LatestPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/politics" element={<PoliticsPage />} />
+          <Route path="/trending/:slug" element={<ArticleDetailPage />} />
+          <Route path="/latest/:slug" element={<ArticleDetailPage />} />
+          <Route path="/news/:slug" element={<ArticleDetailPage />} />
+          <Route path="/politics/:slug" element={<ArticleDetailPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

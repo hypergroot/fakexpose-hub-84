@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ArticleGrid } from "@/components/sections/ArticleGrid";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { LandmarkIcon, Filter } from "lucide-react";
 
 const PoliticsPage = () => {
@@ -100,7 +100,8 @@ const PoliticsPage = () => {
         <ArticleGrid 
           title="Political Statement Fact Checks" 
           articles={politicsArticles}
-          className="pt-0" 
+          className="pt-0"
+          viewAllLink="/politics"
         />
       </main>
       

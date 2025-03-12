@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ArticleGrid } from "@/components/sections/ArticleGrid";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { Newspaper, Filter } from "lucide-react";
 
 const NewsPage = () => {
@@ -100,7 +100,8 @@ const NewsPage = () => {
         <ArticleGrid 
           title="Major News Story Fact Checks" 
           articles={newsArticles}
-          className="pt-0" 
+          className="pt-0"
+          viewAllLink="/news" 
         />
       </main>
       
