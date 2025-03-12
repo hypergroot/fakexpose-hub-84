@@ -6,6 +6,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import TrendingPage from "./pages/TrendingPage";
+import LatestPage from "./pages/LatestPage";
+import NewsPage from "./pages/NewsPage";
+import PoliticsPage from "./pages/PoliticsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -19,6 +22,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/trending" element={<TrendingPage />} />
+          <Route path="/latest" element={<LatestPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/politics" element={<PoliticsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TrendingHero } from "@/components/sections/TrendingHero";
 import { ArticleGrid } from "@/components/sections/ArticleGrid";
+import { ArticleCard } from "@/components/ui/ArticleCard";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Filter } from "lucide-react";
