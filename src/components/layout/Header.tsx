@@ -1,18 +1,39 @@
 
 import { useState, useEffect } from "react";
-import { MenuIcon, X, User } from "lucide-react";
+import { MenuIcon, X, User, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SearchBar } from "../ui/SearchBar";
 import { Button } from "../ui/Button";
 import { FadeIn } from "../animations/FadeIn";
+import { 
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Detect which section is currently in view
+      const sections = ["trending", "latest", "politics", "factcheck", "quiz", "feedback"];
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 150 && rect.bottom >= 150;
+        }
+        return false;
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -24,6 +45,7 @@ export function Header() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
+      setActiveSection(id);
     }
   };
 
@@ -39,6 +61,7 @@ export function Header() {
       <div className="container flex items-center justify-between">
         <FadeIn delay={100} className="flex items-center gap-2">
           <a href="/" className="flex items-center">
+            <Shield className="w-6 h-6 mr-1 text-fakexpose-blue animate-pulse" />
             <span className="mr-1 text-2xl font-bold tracking-tight text-white">
               Fake<span className="text-fakexpose-blue">Xpose</span>
             </span>
@@ -46,24 +69,35 @@ export function Header() {
         </FadeIn>
 
         <div className="hidden md:flex md:items-center md:space-x-6">
-          <button onClick={() => scrollToSection("trending")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
-            Trending
-          </button>
-          <button onClick={() => scrollToSection("latest")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
-            Latest
-          </button>
-          <button onClick={() => scrollToSection("politics")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
-            News & Politics
-          </button>
-          <button onClick={() => scrollToSection("factcheck")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
-            Fact Check
-          </button>
-          <button onClick={() => scrollToSection("quiz")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
-            Quiz
-          </button>
-          <button onClick={() => scrollToSection("feedback")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
-            Feedback
-          </button>
+          {[
+            { id: "trending", label: "Trending" },
+            { id: "latest", label: "Latest" },
+            { id: "politics", label: "News & Politics" },
+            { id: "factcheck", label: "Fact Check" },
+            { id: "quiz", label: "Quiz" },
+            { id: "feedback", label: "Feedback" }
+          ].map(({ id, label }) => (
+            <HoverCard key={id} openDelay={100} closeDelay={100}>
+              <HoverCardTrigger asChild>
+                <button 
+                  onClick={() => scrollToSection(id)} 
+                  className={cn(
+                    "text-sm transition-all duration-300 relative",
+                    activeSection === id 
+                      ? "text-fakexpose-blue font-medium" 
+                      : "text-white hover:text-fakexpose-blue",
+                    "after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-fakexpose-blue after:origin-bottom-right after:transition-transform after:duration-300",
+                    activeSection === id ? "after:scale-x-100" : "hover:after:scale-x-100 hover:after:origin-bottom-left"
+                  )}
+                >
+                  {label}
+                </button>
+              </HoverCardTrigger>
+              <HoverCardContent className="p-3 text-xs glass-panel border-fakexpose-blue/20">
+                <p>View {label.toLowerCase()} stories and updates</p>
+              </HoverCardContent>
+            </HoverCard>
+          ))}
         </div>
 
         <div className="flex items-center gap-4">
@@ -98,12 +132,27 @@ export function Header() {
           <SearchBar />
         </div>
         <nav className="flex flex-col space-y-4">
-          <button onClick={() => scrollToSection("trending")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Trending</button>
-          <button onClick={() => scrollToSection("latest")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Latest</button>
-          <button onClick={() => scrollToSection("politics")} className="text-left text-white hover:text-fakexpose-blue transition-colors">News & Politics</button>
-          <button onClick={() => scrollToSection("factcheck")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Fact Check</button>
-          <button onClick={() => scrollToSection("quiz")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Quiz</button>
-          <button onClick={() => scrollToSection("feedback")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Feedback</button>
+          {[
+            { id: "trending", label: "Trending" },
+            { id: "latest", label: "Latest" },
+            { id: "politics", label: "News & Politics" },
+            { id: "factcheck", label: "Fact Check" },
+            { id: "quiz", label: "Quiz" },
+            { id: "feedback", label: "Feedback" }
+          ].map(({ id, label }) => (
+            <button 
+              key={id}
+              onClick={() => scrollToSection(id)} 
+              className={cn(
+                "text-left transition-colors",
+                activeSection === id 
+                  ? "text-fakexpose-blue font-medium" 
+                  : "text-white hover:text-fakexpose-blue"
+              )}
+            >
+              {label}
+            </button>
+          ))}
           <Button variant="glassmorphic">
             <User className="mr-2 h-4 w-4" />
             Sign In
