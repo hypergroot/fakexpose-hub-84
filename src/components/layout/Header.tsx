@@ -37,35 +37,23 @@ export function Header() {
           </a>
         </FadeIn>
 
-        <nav className="hidden items-center space-x-6 md:flex">
-          <FadeIn delay={150}>
-            <a href="/fact-check" className="nav-link">Fact Check</a>
-          </FadeIn>
-          <FadeIn delay={200}>
-            <a href="/quiz" className="nav-link">Quiz</a>
-          </FadeIn>
-          <FadeIn delay={250}>
-            <a href="/feedback" className="nav-link">Feedback</a>
-          </FadeIn>
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <FadeIn delay={300} className="hidden md:block">
-            <SearchBar className="w-60 lg:w-80" />
-          </FadeIn>
-          <FadeIn delay={350}>
-            <Button variant="glassmorphic" size="sm" className="hidden md:flex">
-              <User className="mr-2 h-4 w-4" />
-              Sign In
-            </Button>
-          </FadeIn>
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
-          >
-            {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
-          </button>
-        </div>
+        <FadeIn delay={300} className="hidden md:block">
+          <SearchBar className="w-60 lg:w-80" />
+        </FadeIn>
+        
+        <FadeIn delay={350}>
+          <Button variant="glassmorphic" size="sm" className="hidden md:flex">
+            <User className="mr-2 h-4 w-4" />
+            Sign In
+          </Button>
+        </FadeIn>
+        
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
+        >
+          {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+        </button>
       </div>
 
       {/* Mobile menu */}

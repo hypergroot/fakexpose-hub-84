@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { FactCheckSection } from "@/components/sections/FactCheckSection";
 import { QuizSection } from "@/components/sections/QuizSection";
+import { FeedbackSection } from "@/components/sections/FeedbackSection";
 import { ArticleGrid } from "@/components/sections/ArticleGrid";
 
 const Index = () => {
@@ -86,74 +87,12 @@ const Index = () => {
       
       <main className="flex-1">
         <HeroSection />
-        <FactCheckSection />
-        <QuizSection />
-        
         <ArticleGrid title="Trending" articles={trendingArticles} />
         <ArticleGrid title="Latest" articles={latestArticles} className="bg-fakexpose-charcoal" />
         <ArticleGrid title="News & Politics" articles={politicsArticles} />
-        
-        {/* Feedback section */}
-        <section className="section-padding">
-          <div className="container">
-            <div className="glass-panel mx-auto max-w-3xl overflow-hidden rounded-xl">
-              <div className="p-8">
-                <h2 className="mb-6 text-center text-2xl font-bold tracking-tight md:text-3xl">
-                  Help Us Improve FakeXpose
-                </h2>
-                <p className="mb-8 text-center text-muted-foreground">
-                  Your feedback helps us build a better fact-checking platform for everyone.
-                  Share your thoughts, report issues, or suggest features.
-                </p>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <div>
-                      <label className="mb-1 block text-sm" htmlFor="name">
-                        Name
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        className="w-full rounded-md bg-muted p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label className="mb-1 block text-sm" htmlFor="email">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        className="w-full rounded-md bg-muted p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
-                        placeholder="Your email"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="mb-1 block text-sm" htmlFor="message">
-                      Feedback
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="w-full rounded-md bg-muted p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
-                      placeholder="Share your thoughts or suggestions..."
-                    ></textarea>
-                  </div>
-                  <div className="flex justify-center">
-                    <button
-                      type="submit"
-                      className="rounded-md bg-primary px-6 py-2 font-medium text-white transition-colors hover:bg-primary/90"
-                    >
-                      Submit Feedback
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FactCheckSection />
+        <QuizSection />
+        <FeedbackSection />
       </main>
       
       <Footer />
