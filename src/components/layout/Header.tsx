@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { SearchBar } from "../ui/SearchBar";
 import { Button } from "../ui/Button";
 import { FadeIn } from "../animations/FadeIn";
+import { Link } from "react-router-dom";
 import { 
   HoverCard,
   HoverCardContent,
@@ -20,19 +21,22 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
       
-      // Detect which section is currently in view
-      const sections = ["trending", "latest", "politics", "factcheck", "quiz", "feedback"];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
+      // Only run section detection on the homepage
+      if (window.location.pathname === "/") {
+        // Detect which section is currently in view
+        const sections = ["latest", "politics", "factcheck", "quiz", "feedback"];
+        const currentSection = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 150 && rect.bottom >= 150;
+          }
+          return false;
+        });
+        
+        if (currentSection) {
+          setActiveSection(currentSection);
         }
-        return false;
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
       }
     };
 
@@ -41,12 +45,15 @@ export function Header() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-      setActiveSection(id);
+    // Only scroll if on homepage
+    if (window.location.pathname === "/") {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(id);
+      }
     }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -60,17 +67,37 @@ export function Header() {
     >
       <div className="container flex items-center justify-between">
         <FadeIn delay={100} className="flex items-center gap-2">
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <Shield className="w-6 h-6 mr-1 text-fakexpose-blue animate-pulse" />
             <span className="mr-1 text-2xl font-bold tracking-tight text-white">
               Fake<span className="text-fakexpose-blue">Xpose</span>
             </span>
-          </a>
+          </Link>
         </FadeIn>
 
         <div className="hidden md:flex md:items-center md:space-x-6">
+          <HoverCard key="trending" openDelay={100} closeDelay={100}>
+            <HoverCardTrigger asChild>
+              <Link 
+                to="/trending" 
+                className={cn(
+                  "text-sm transition-all duration-300 relative",
+                  activeSection === "trending" 
+                    ? "text-fakexpose-blue font-medium" 
+                    : "text-white hover:text-fakexpose-blue",
+                  "after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-fakexpose-blue after:origin-bottom-right after:transition-transform after:duration-300",
+                  activeSection === "trending" ? "after:scale-x-100" : "hover:after:scale-x-100 hover:after:origin-bottom-left"
+                )}
+              >
+                Trending
+              </Link>
+            </HoverCardTrigger>
+            <HoverCardContent className="p-3 text-xs glass-panel border-fakexpose-blue/20">
+              <p>View trending fact check stories</p>
+            </HoverCardContent>
+          </HoverCard>
+
           {[
-            { id: "trending", label: "Trending" },
             { id: "latest", label: "Latest" },
             { id: "politics", label: "News & Politics" },
             { id: "factcheck", label: "Fact Check" },
@@ -132,8 +159,19 @@ export function Header() {
           <SearchBar />
         </div>
         <nav className="flex flex-col space-y-4">
+          <Link 
+            to="/trending" 
+            className={cn(
+              "text-left transition-colors",
+              activeSection === "trending" 
+                ? "text-fakexpose-blue font-medium" 
+                : "text-white hover:text-fakexpose-blue"
+            )}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Trending
+          </Link>
           {[
-            { id: "trending", label: "Trending" },
             { id: "latest", label: "Latest" },
             { id: "politics", label: "News & Politics" },
             { id: "factcheck", label: "Fact Check" },
