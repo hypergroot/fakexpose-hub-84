@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://preview--fakexpose-hub-05.lovable.app/) and start prompting.
+Simply visit the [Lovable Project](https://lovable.dev/projects/99760535-aec0-44fb-b5b3-fec4188404cb) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
