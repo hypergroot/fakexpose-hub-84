@@ -1,5 +1,5 @@
 
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, Search, AlertTriangle } from "lucide-react";
 import { FadeIn } from "../animations/FadeIn";
 
 export function TrendingHero() {
@@ -19,6 +19,32 @@ export function TrendingHero() {
             Stay informed with our most popular fact checks and analyses of viral content,
             trending stories, and widely shared claims circulating online.
           </p>
+          
+          <div className="mt-8 grid w-full max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="glass-panel flex flex-col items-center p-5 rounded-lg">
+              <Search className="mb-2 h-6 w-6 text-fakexpose-blue" />
+              <h3 className="mb-1 font-semibold">Research</h3>
+              <p className="text-xs text-center text-muted-foreground">
+                We investigate trending claims using primary sources and expert consultation
+              </p>
+            </div>
+            
+            <div className="glass-panel flex flex-col items-center p-5 rounded-lg">
+              <AlertTriangle className="mb-2 h-6 w-6 text-fakexpose-blue" />
+              <h3 className="mb-1 font-semibold">Verification</h3>
+              <p className="text-xs text-center text-muted-foreground">
+                Our fact-checkers verify each claim using a rigorous methodology
+              </p>
+            </div>
+            
+            <div className="glass-panel flex flex-col items-center p-5 rounded-lg">
+              <TrendingUp className="mb-2 h-6 w-6 text-fakexpose-blue" />
+              <h3 className="mb-1 font-semibold">Real-time</h3>
+              <p className="text-xs text-center text-muted-foreground">
+                We monitor trending topics 24/7 to provide timely fact checks
+              </p>
+            </div>
+          </div>
         </FadeIn>
       </div>
     </section>

@@ -1,6 +1,6 @@
 
 import { cn } from "@/lib/utils";
-import { Button } from "./Button";
+import { Button } from "./button";
 import { FadeIn } from "../animations/FadeIn";
 
 export interface ArticleCardProps {
@@ -49,8 +49,8 @@ export function ArticleCard({
             {description}
           </p>
           
-          <Button variant="glassmorphic" size="sm" className="self-start">
-            Read More
+          <Button variant="glassmorphic" size="sm" className="self-start" asChild>
+            <a href={slug}>Read More</a>
           </Button>
         </div>
       </div>
