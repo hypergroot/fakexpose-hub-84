@@ -87,12 +87,24 @@ const Index = () => {
       
       <main className="flex-1">
         <HeroSection />
-        <ArticleGrid title="Trending" articles={trendingArticles} />
-        <ArticleGrid title="Latest" articles={latestArticles} className="bg-fakexpose-charcoal" />
-        <ArticleGrid title="News & Politics" articles={politicsArticles} />
-        <FactCheckSection />
-        <QuizSection />
-        <FeedbackSection />
+        <div id="trending">
+          <ArticleGrid title="Trending" articles={trendingArticles} />
+        </div>
+        <div id="latest">
+          <ArticleGrid title="Latest" articles={latestArticles} className="bg-fakexpose-charcoal" />
+        </div>
+        <div id="politics">
+          <ArticleGrid title="News & Politics" articles={politicsArticles} />
+        </div>
+        <div id="factcheck">
+          <FactCheckSection />
+        </div>
+        <div id="quiz">
+          <QuizSection />
+        </div>
+        <div id="feedback">
+          <FeedbackSection />
+        </div>
       </main>
       
       <Footer />

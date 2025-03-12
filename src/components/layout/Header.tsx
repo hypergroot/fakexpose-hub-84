@@ -19,6 +19,14 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <header
       className={cn(
@@ -37,23 +45,46 @@ export function Header() {
           </a>
         </FadeIn>
 
-        <FadeIn delay={300} className="hidden md:block">
-          <SearchBar className="w-60 lg:w-80" />
-        </FadeIn>
-        
-        <FadeIn delay={350}>
-          <Button variant="glassmorphic" size="sm" className="hidden md:flex">
-            <User className="mr-2 h-4 w-4" />
-            Sign In
-          </Button>
-        </FadeIn>
-        
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
-        >
-          {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
-        </button>
+        <div className="hidden md:flex md:items-center md:space-x-6">
+          <button onClick={() => scrollToSection("trending")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
+            Trending
+          </button>
+          <button onClick={() => scrollToSection("latest")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
+            Latest
+          </button>
+          <button onClick={() => scrollToSection("politics")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
+            News & Politics
+          </button>
+          <button onClick={() => scrollToSection("factcheck")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
+            Fact Check
+          </button>
+          <button onClick={() => scrollToSection("quiz")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
+            Quiz
+          </button>
+          <button onClick={() => scrollToSection("feedback")} className="text-sm text-white hover:text-fakexpose-blue transition-colors">
+            Feedback
+          </button>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <FadeIn delay={300} className="hidden md:block">
+            <SearchBar className="w-60 lg:w-80" />
+          </FadeIn>
+          
+          <FadeIn delay={350}>
+            <Button variant="glassmorphic" size="sm" className="hidden md:flex">
+              <User className="mr-2 h-4 w-4" />
+              Sign In
+            </Button>
+          </FadeIn>
+          
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
+          >
+            {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -67,9 +98,12 @@ export function Header() {
           <SearchBar />
         </div>
         <nav className="flex flex-col space-y-4">
-          <a href="/fact-check" className="nav-link">Fact Check</a>
-          <a href="/quiz" className="nav-link">Quiz</a>
-          <a href="/feedback" className="nav-link">Feedback</a>
+          <button onClick={() => scrollToSection("trending")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Trending</button>
+          <button onClick={() => scrollToSection("latest")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Latest</button>
+          <button onClick={() => scrollToSection("politics")} className="text-left text-white hover:text-fakexpose-blue transition-colors">News & Politics</button>
+          <button onClick={() => scrollToSection("factcheck")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Fact Check</button>
+          <button onClick={() => scrollToSection("quiz")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Quiz</button>
+          <button onClick={() => scrollToSection("feedback")} className="text-left text-white hover:text-fakexpose-blue transition-colors">Feedback</button>
           <Button variant="glassmorphic">
             <User className="mr-2 h-4 w-4" />
             Sign In
