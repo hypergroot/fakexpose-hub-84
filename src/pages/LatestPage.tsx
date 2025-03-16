@@ -3,59 +3,59 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ArticleGrid } from "@/components/sections/ArticleGrid";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { Button } from "@/components/ui/Button";
-import { ClockIcon, Filter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ClockIcon, Filter, Globe } from "lucide-react";
 
 const LatestPage = () => {
-  // Sample latest fact-check articles data - different from trending
+  // Sample latest fact-check articles data - focused on world news
   const latestArticles = [
     {
-      title: "Investigation: Recent flood images claimed to be AI-generated",
-      description: "Our team analyzes viral images from the recent flooding disaster that critics claim were created using AI tools.",
-      image: "https://images.unsplash.com/photo-1509219411165-3d426daa7f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      category: "Disaster",
+      title: "European Parliament votes on new climate legislation: Fact vs Fiction",
+      description: "A comprehensive analysis of claims surrounding the European Parliament's most recent climate bill and what it really means for global policy.",
+      image: "https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Global Policy",
       date: "Just now",
-      slug: "flood-images-ai-generated",
+      slug: "/latest/european-climate-legislation",
     },
     {
-      title: "New research on vitamin supplements: Separating fact from fiction",
-      description: "A comprehensive analysis of the latest scientific study on vitamin supplements that's causing controversy in health circles.",
-      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2130&q=80",
-      category: "Health",
-      date: "30 minutes ago",
-      slug: "vitamin-research-facts",
-    },
-    {
-      title: "Fact-checking today's controversial celebrity interview statements",
-      description: "Our analysis of the most controversial claims made during a high-profile celebrity interview that aired this morning.",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-      category: "Entertainment",
-      date: "2 hours ago",
-      slug: "celebrity-interview-factcheck",
-    },
-    {
-      title: "The truth behind today's viral social media market crash prediction",
-      description: "A detailed examination of a widely-shared post predicting an imminent market crash that's causing public concern.",
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      category: "Finance",
-      date: "4 hours ago",
-      slug: "market-crash-prediction",
-    },
-    {
-      title: "Verifying claims about the newly approved environmental policy",
-      description: "We analyze the key provisions of today's environmental policy announcement and verify claims from both supporters and critics.",
-      image: "https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      title: "Investigation: Is the viral footage from the Amazon rainfire manipulated?",
+      description: "Our team of experts examines viral footage claiming to show the recent Amazon fires, analyzing whether the images have been digitally altered.",
+      image: "https://images.unsplash.com/photo-1615092296061-e2ccfeb2f3d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       category: "Environment",
-      date: "6 hours ago",
-      slug: "environmental-policy-analysis",
+      date: "1 hour ago",
+      slug: "/latest/amazon-footage-analysis",
     },
     {
-      title: "Today's viral education reform memo: Real or fabricated?",
-      description: "An alleged internal memo about controversial education reforms has gone viral. Our team investigates its authenticity.",
-      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
-      category: "Education",
-      date: "8 hours ago",
-      slug: "education-memo-investigation",
+      title: "Debunking claims about the new international trade agreement",
+      description: "Analysis of the most controversial statements made about the international trade agreement signed yesterday between major economic powers.",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Economics",
+      date: "2 hours ago",
+      slug: "/latest/trade-agreement-facts",
+    },
+    {
+      title: "Verifying reports of humanitarian aid distribution in conflict zones",
+      description: "Our international correspondents fact-check claims about the distribution of humanitarian aid in major conflict zones around the world.",
+      image: "https://images.unsplash.com/photo-1631818127810-e0bcf5913add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      category: "Humanitarian",
+      date: "3 hours ago",
+      slug: "/latest/humanitarian-aid-verification",
+    },
+    {
+      title: "Fact check: Global vaccination statistics and misinformation",
+      description: "An in-depth look at recent viral claims about global vaccination rates and effectiveness, compared with official WHO data.",
+      image: "https://images.unsplash.com/photo-1605289355680-75fb41239154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80",
+      category: "Health",
+      date: "5 hours ago",
+      slug: "/latest/global-vaccination-facts",
+    },
+    {
+      title: "Analysis: The truth behind the viral G20 Summit photograph",
+      description: "A viral image claiming to show world leaders in a tense moment at the G20 Summit has been circulating online. We verify its authenticity.",
+      image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "International Relations",
+      date: "6 hours ago",
+      slug: "/latest/g20-summit-photograph",
     },
   ];
 
@@ -69,16 +69,16 @@ const LatestPage = () => {
           <div className="container">
             <FadeIn className="flex flex-col items-center text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-fakexpose-blue/10">
-                <ClockIcon className="h-8 w-8 text-fakexpose-blue" />
+                <Globe className="h-8 w-8 text-fakexpose-blue" />
               </div>
               
               <h1 className="mb-3 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-                Latest Fact Checks
+                Latest World News Fact Checks
               </h1>
               
               <p className="max-w-2xl text-muted-foreground">
-                Our most recent fact checks and investigations, providing you with up-to-date
-                verification of trending claims and viral content.
+                Our most recent fact checks on global news, international politics, and 
+                worldwide events that matter. Get verified information from across the globe.
               </p>
             </FadeIn>
           </div>
@@ -88,21 +88,21 @@ const LatestPage = () => {
         <section className="py-8">
           <div className="container">
             <FadeIn className="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
-              <h2 className="text-xl font-semibold">Latest Fact Checks</h2>
+              <h2 className="text-xl font-semibold">Global Fact Checks</h2>
               <Button variant="outline" size="sm" className="group">
                 <Filter className="mr-2 h-4 w-4 transition-transform group-hover:rotate-12" />
-                Filter Results
+                Filter by Region
               </Button>
             </FadeIn>
           </div>
         </section>
         
         <ArticleGrid 
-          title="Today's Latest Fact Checks" 
+          title="Today's Global Fact Checks" 
           articles={latestArticles}
           className="pt-0"
           viewAllLink="/latest" 
-          sectionIdentifier="latest"
+          sectionIdentifier="latest-news"
         />
       </main>
       

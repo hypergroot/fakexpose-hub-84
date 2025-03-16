@@ -1,6 +1,6 @@
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { FadeIn } from "../animations/FadeIn";
 
 export interface ArticleCardProps {
