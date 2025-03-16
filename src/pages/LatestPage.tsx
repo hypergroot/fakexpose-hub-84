@@ -7,55 +7,55 @@ import { Button } from "@/components/ui/Button";
 import { ClockIcon, Filter } from "lucide-react";
 
 const LatestPage = () => {
-  // Sample latest fact-check articles data
+  // Sample latest fact-check articles data - different from trending
   const latestArticles = [
     {
-      title: "Examining claims about the new climate policy proposal",
-      description: "A comprehensive analysis of the recent climate policy announced by the government and the claims surrounding it.",
-      image: "https://images.unsplash.com/photo-1561049501-e1f96bdd98fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      category: "Environment",
-      date: "1 hour ago",
-      slug: "/latest/climate-policy-claims",
+      title: "Investigation: Recent flood images claimed to be AI-generated",
+      description: "Our team analyzes viral images from the recent flooding disaster that critics claim were created using AI tools.",
+      image: "https://images.unsplash.com/photo-1509219411165-3d426daa7f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Disaster",
+      date: "Just now",
+      slug: "flood-images-ai-generated",
     },
     {
-      title: "Is the viral video of bizarre cloud formation real?",
-      description: "Social media users are sharing footage of unusual cloud patterns claiming it to be evidence of weather manipulation.",
-      image: "https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
-      category: "Science",
-      date: "3 hours ago",
-      slug: "/latest/cloud-formation-video",
-    },
-    {
-      title: "Fact-checking: Did the health minister make these statements?",
-      description: "Analyzing the accuracy of quotes attributed to the health minister regarding public healthcare reforms.",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      category: "Politics",
-      date: "5 hours ago",
-      slug: "/latest/health-minister-quotes",
-    },
-    {
-      title: "New study on vitamin supplements: What's true and what's exaggerated",
-      description: "Separating facts from fiction in reports about a recent scientific study on vitamin supplements.",
-      image: "https://images.unsplash.com/photo-1577196496383-1d1bb6b6b6cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      title: "New research on vitamin supplements: Separating fact from fiction",
+      description: "A comprehensive analysis of the latest scientific study on vitamin supplements that's causing controversy in health circles.",
+      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2130&q=80",
       category: "Health",
+      date: "30 minutes ago",
+      slug: "vitamin-research-facts",
+    },
+    {
+      title: "Fact-checking today's controversial celebrity interview statements",
+      description: "Our analysis of the most controversial claims made during a high-profile celebrity interview that aired this morning.",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+      category: "Entertainment",
+      date: "2 hours ago",
+      slug: "celebrity-interview-factcheck",
+    },
+    {
+      title: "The truth behind today's viral social media market crash prediction",
+      description: "A detailed examination of a widely-shared post predicting an imminent market crash that's causing public concern.",
+      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Finance",
+      date: "4 hours ago",
+      slug: "market-crash-prediction",
+    },
+    {
+      title: "Verifying claims about the newly approved environmental policy",
+      description: "We analyze the key provisions of today's environmental policy announcement and verify claims from both supporters and critics.",
+      image: "https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Environment",
+      date: "6 hours ago",
+      slug: "environmental-policy-analysis",
+    },
+    {
+      title: "Today's viral education reform memo: Real or fabricated?",
+      description: "An alleged internal memo about controversial education reforms has gone viral. Our team investigates its authenticity.",
+      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
+      category: "Education",
       date: "8 hours ago",
-      slug: "/latest/vitamin-study-facts",
-    },
-    {
-      title: "Examining the authenticity of viral space photo",
-      description: "A stunning image claiming to show a rare cosmic event has gone viral. We consult with astronomers to verify its authenticity.",
-      image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80",
-      category: "Science",
-      date: "12 hours ago",
-      slug: "/latest/space-photo-verification",
-    },
-    {
-      title: "Investigation: Is this phone scam warning legitimate?",
-      description: "A message warning about a sophisticated phone scam is being forwarded widely. We investigate if the threat is real.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      category: "Scam Alert",
-      date: "14 hours ago",
-      slug: "/latest/phone-scam-warning",
+      slug: "education-memo-investigation",
     },
   ];
 
@@ -102,6 +102,7 @@ const LatestPage = () => {
           articles={latestArticles}
           className="pt-0"
           viewAllLink="/latest" 
+          sectionIdentifier="latest"
         />
       </main>
       

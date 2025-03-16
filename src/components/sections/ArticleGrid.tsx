@@ -9,16 +9,18 @@ interface ArticleGridProps {
   articles: ArticleCardProps[];
   className?: string;
   viewAllLink?: string;
+  sectionIdentifier?: string;
 }
 
 export function ArticleGrid({ 
   title, 
   articles, 
   className,
-  viewAllLink = "#" 
+  viewAllLink = "#",
+  sectionIdentifier = ""
 }: ArticleGridProps) {
   return (
-    <section className={cn("section-padding", className)}>
+    <section className={cn("section-padding", className)} id={sectionIdentifier}>
       <div className="container">
         <FadeIn className="mb-8 flex items-center justify-between">
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
