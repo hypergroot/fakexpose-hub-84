@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { createClient } from '@supabase/supabase-js';
 
 // Form validation schema
 const feedbackFormSchema = z.object({
@@ -26,6 +26,11 @@ const feedbackFormSchema = z.object({
 });
 
 type FeedbackFormValues = z.infer<typeof feedbackFormSchema>;
+
+// Initialize Supabase client
+const supabaseUrl = 'https://your-project-url.supabase.co';
+const supabaseKey = 'your-anon-key';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export function FeedbackSection() {
   const { toast } = useToast();
@@ -47,12 +52,20 @@ export function FeedbackSection() {
     setIsSubmitting(true);
     
     try {
-      // In a real application, this would send data to your backend
-      // For demonstration, we'll simulate an API call
-      console.log("Feedback submitted:", data);
+      // Store feedback in Supabase
+      const { error } = await supabase
+        .from('feedback')
+        .insert([
+          { 
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            type: data.type,
+            created_at: new Date()
+          }
+        ]);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (error) throw error;
       
       // Show success message
       toast({
