@@ -1,7 +1,8 @@
+
 import React from "react";
 import { FadeIn } from "../animations/FadeIn";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { Search, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function FactCheckSection() {
@@ -41,7 +42,7 @@ export function FactCheckSection() {
                   className="h-32 w-full rounded-lg bg-muted/70 p-3 pl-10 text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-1 focus:ring-primary/50 backdrop-blur-sm resize-none"
                 />
               </div>
-              <Button variant="gradient" className="w-full md:w-auto">
+              <Button variant="default" className="w-full md:w-auto">
                 Verify Now
               </Button>
             </form>

@@ -1,6 +1,6 @@
-
-import { Button } from "../ui/Button";
+import React from "react";
 import { FadeIn } from "../animations/FadeIn";
+import { Button } from "@/components/ui/button";
 
 export function QuizSection() {
   return (

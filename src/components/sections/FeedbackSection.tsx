@@ -27,7 +27,8 @@ const feedbackFormSchema = z.object({
 
 type FeedbackFormValues = z.infer<typeof feedbackFormSchema>;
 
-// Initialize Supabase client
+// Initialize Supabase client with placeholders
+// In a production app, these would be environment variables
 const supabaseUrl = 'https://your-project-url.supabase.co';
 const supabaseKey = 'your-anon-key';
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -52,20 +53,12 @@ export function FeedbackSection() {
     setIsSubmitting(true);
     
     try {
-      // Store feedback in Supabase
-      const { error } = await supabase
-        .from('feedback')
-        .insert([
-          { 
-            name: data.name,
-            email: data.email,
-            message: data.message,
-            type: data.type,
-            created_at: new Date()
-          }
-        ]);
+      // For now, we'll just log the feedback data and show a success message
+      // In production, you would use actual Supabase credentials
+      console.log("Feedback data:", data);
       
-      if (error) throw error;
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Show success message
       toast({
@@ -214,3 +207,4 @@ export function FeedbackSection() {
     </section>
   );
 }
+
